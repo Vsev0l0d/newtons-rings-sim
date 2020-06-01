@@ -42,16 +42,15 @@ Reflected.onchange = () => {
 Grad.onclick = (e) => {
     clickX = e.pageX - Grad.offsetLeft
     clickY = e.pageY - Grad.offsetTop
-    let distance = Math.round(Math.sqrt(Math.pow(rectCenterW - clickX, 2) + Math.pow(rectCenterH - clickY, 2))) //пока тупо пиксели
+    let distance = Math.round(Math.sqrt(Math.pow(rectCenterW - clickX, 2) + Math.pow(rectCenterH - clickY, 2)))
     if (distance !== 0) {
         DeleteButton.hidden = false;
         document.getElementById("distance").innerText ="\nРасстояние от центра: " +
-            distance.toString() + " px" //пока тупо пиксели
-        update()
+            (pixelsToMetres(distance.toString()) * 1e3).toFixed(3) + " мм"
     } else {
         document.getElementById("distance").innerText ="\nКликните на одно из колец"
-        update()
     }
+    update()
 }
 
 DeleteButton.onclick = () => {
@@ -64,19 +63,19 @@ DeleteButton.onclick = () => {
 
 // Для мобильных устройств
 
-RefractiveIndex.onchange = function () {
+RefractiveIndex.onchange = () => {
     if (!isPortableDevice) return;
     document.getElementById("labelN").innerText = "Показатель преломления среды: " + Number(RefractiveIndex.value).toFixed(2);
     update();
 };
 
-Wavelength.onchange = function () {
+Wavelength.onchange = () => {
     if (!isPortableDevice) return;
     document.getElementById("labelLambda").innerText = "Длина волны: " + Wavelength.value + " нм";
     update();
 };
 
-RadiusLens.onchange = function () {
+RadiusLens.onchange = () => {
     if (!isPortableDevice) return;
     document.getElementById("labelRadius").innerText = "Радиус линзы: " + Number(RadiusLens.value).toFixed(2) + " м";
     update();

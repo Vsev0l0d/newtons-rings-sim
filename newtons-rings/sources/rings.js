@@ -5,7 +5,7 @@ const
     rectY = 0,
     rectCenterW = (rectWidth - rectX) / 2,
     rectCenterH = (rectHeight - rectY) / 2,
-    pixelsInMetre = (rectWidth / 2) * 10 / 1e-2, // половина стороны квадрата = 10 см
+    pixelsInMetre = 125 * 1e3,
     drawingPixelStep = 0.5; // лучше всего работает при 0.5, при 1 тускловато (и есть артефакты)
 let
     isPortableDevice = true,
@@ -19,7 +19,7 @@ function update() {
         opticalPathDifference,
         intensity,
         passing = +Passing.value,
-        lensRadius = +RadiusLens.value; // метры?
+        lensRadius = +RadiusLens.value; // метры
 
     // Черный квадрат (фон)
     ctx.fillStyle = "rgba(0, 0, 0, 1)";
@@ -29,7 +29,7 @@ function update() {
     // Кольца
     for (let rInPixels = 0; rInPixels < rectWidth / 2 * Math.sqrt(2); rInPixels += drawingPixelStep) { // здесь r в пикселях, а не метрах!
         opticalPathDifference =
-            calculateOpticalPathDifference(passing, pixelsToMetres(rInPixels, pixelsInMetre),
+            calculateOpticalPathDifference(passing, pixelsToMetres(rInPixels),
                 lensRadius, n, wavelength) // а вот тут в метрах
         intensity = calculateIntensity(opticalPathDifference, wavelength)
         ctx.beginPath()
@@ -46,7 +46,7 @@ function update() {
     ctx.stroke()
 }
 
-function pixelsToMetres(inPixels, pixelsInMetre) {
+function pixelsToMetres(inPixels) {
     return inPixels / pixelsInMetre
 }
 
