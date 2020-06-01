@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="newtons-rings/sources/style.css">
+    <title>Кольца Ньютона</title>
+    <style>body { font-family: Arial, Helvetica, sans-serif; }</style>
+</head>
+<body style="background: floralwhite">
+
+<header>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Симуляция колец Ньютона (Канторов, Кириенко P3112) : в разработке : сторона квадрата = 20 см</h5>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="canvasWrap" style="text-align: left;">
+            <canvas class="gradient" id="grad" width="500" height="500"></canvas>
+        </div>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="lambda" id="labelLambda">Длина волны: 580 нм</label>
+                    <input type="range" min="380" max="780" class="form-control-range" id="lambda">
+                </div>
+                <div class="form-group">
+                    <label for="N" id="labelN">Показатель преломления среды: 1.00</label>
+                    <input type="range" min="0.5" max="1.5" step="0.05" class="form-control-range" id="N">
+                </div>
+                <div class="form-group">
+                    <label for="Radius" id="labelRadius">Радиус линзы: 1.75 м</label>
+                    <input type="range" min="0.50" max="3" step="0.05" class="form-control-range" id="Radius">
+                </div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="reflected" name="through" value="1" checked>
+                        <label for="reflected" class="form-check-label">В отраженном свете</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="through" name="through" value="0">
+                        <label for="through" class="form-check-label">В проходящем свете</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label id="distance"><br>Кликните на одно из колец</label>
+                </div>
+                <div class="form-group">
+                    <p><input id="deleteButton" hidden="true" type="button" value=" Удалить радиус "></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script src="newtons-rings/sources/elements.js"></script>
+<script src="newtons-rings/sources/rings.js"></script>
+<a style="display: none;"></a>
+<noscript>
+    <div>
+        Для работы симуляции нужен включённый Javascript :(
+    </div>
+</noscript>
+
+</body>
+</html>
